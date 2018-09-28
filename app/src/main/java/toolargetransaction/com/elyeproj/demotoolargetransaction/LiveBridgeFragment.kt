@@ -2,41 +2,46 @@ package toolargetransaction.com.elyeproj.demotoolargetransaction
 
 
 import android.os.Bundle
+import android.os.Parcelable
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.evernote.android.state.State
+import com.evernote.android.state.StateSaver
+import com.livefront.bridge.Bridge
 import kotlinx.android.synthetic.main.fragment_too_large_transaction.*
 
-class TooLargeTransactionFragment : Fragment() {
-
+class LiveBridgeFragment : Fragment() {
 
     companion object {
         const val KEY = "KeyIndex"
         const val DATA = "KeyData"
-        const val TAG = "TooLargeTransactionFragment"
+        const val TAG = "LiveBridgeFragment"
 
         fun newInstance(index: Int): Fragment {
             val argument = Bundle()
             argument.putInt(KEY, index)
-            val fragment =  TooLargeTransactionFragment()
+            val fragment =  LiveBridgeFragment()
             fragment.arguments = argument
             return fragment
         }
     }
 
-    private var data: IntArray? = null
+    @State
+    var data: IntArray? = null
+
     private var size: Int = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-
         size = (arguments?.getInt(KEY)?: 0) * 100000
-        data = if (savedInstanceState != null) {
-            savedInstanceState.getSerializable(DATA) as IntArray
+
+        if (savedInstanceState != null) {
+            Bridge.restoreInstanceState(this, savedInstanceState);
+//            StateSaver.restoreInstanceState(this, savedInstanceState)
         } else {
-            IntArray(size)
+            data = IntArray(size)
         }
 
         return inflater.inflate(R.layout.fragment_too_large_transaction, container, false)
@@ -44,7 +49,8 @@ class TooLargeTransactionFragment : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putSerializable(DATA, data)
+        Bridge.saveInstanceState(this, outState);
+//        StateSaver.saveInstanceState(this, outState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

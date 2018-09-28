@@ -14,5 +14,8 @@ class MainActivity : AppCompatActivity() {
         btn_too_large_transaction.setOnClickListener {
             startActivity(Intent(this, TooLargeTransactionActivity::class.java))
         }
+        btn_live_bridge_transaction.setOnClickListener {
+            startActivity(Intent(this, LiveBridgeActivity::class.java))
+        }
     }
 }
