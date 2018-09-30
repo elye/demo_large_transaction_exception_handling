@@ -31,11 +31,18 @@ class LiveBridgeActivity : AppCompatActivity() {
         updateSharedPrefCount()
 
 
-        btn_add_fragment.setOnClickListener {
+        btn_add_state_fragment.setOnClickListener {
             index++
             supportFragmentManager.beginTransaction()
                     .replace(R.id.container_fragment, LiveBridgeFragment.newInstance(index))
                     .addToBackStack(LiveBridgeFragment.TAG)
+                    .commit()
+        }
+
+        btn_add_empty_fragment.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.container_fragment, NothingFragment())
+                    .addToBackStack(NothingFragment.TAG)
                     .commit()
         }
     }

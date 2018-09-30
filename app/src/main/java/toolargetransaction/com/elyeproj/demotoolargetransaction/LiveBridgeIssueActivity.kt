@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.livefront.bridge.Bridge
 import kotlinx.android.synthetic.main.activity_too_large_transaction.*
 
 class LiveBridgeIssueActivity : AppCompatActivity() {
@@ -28,11 +27,18 @@ class LiveBridgeIssueActivity : AppCompatActivity() {
         sharedPreferences = applicationContext.getSharedPreferences(SHARED_TAG, Context.MODE_PRIVATE)
         updateSharedPrefCount()
 
-        btn_add_fragment.setOnClickListener {
+        btn_add_state_fragment.setOnClickListener {
             index++
             supportFragmentManager.beginTransaction()
                     .replace(R.id.container_fragment, LiveBridgeIssueFragment.newInstance(index))
                     .addToBackStack(LiveBridgeIssueFragment.TAG)
+                    .commit()
+        }
+
+        btn_add_empty_fragment.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.container_fragment, NothingFragment())
+                    .addToBackStack(NothingFragment.TAG)
                     .commit()
         }
     }

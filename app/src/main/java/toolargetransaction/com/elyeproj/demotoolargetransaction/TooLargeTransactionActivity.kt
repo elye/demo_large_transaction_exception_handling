@@ -19,11 +19,18 @@ class TooLargeTransactionActivity : AppCompatActivity() {
         savedInstanceState?.let{
             index = it.getInt(KEY)
         }
-        btn_add_fragment.setOnClickListener {
+        btn_add_state_fragment.setOnClickListener {
             index++
             supportFragmentManager.beginTransaction()
                     .replace(R.id.container_fragment, TooLargeTransactionFragment.newInstance(index))
                     .addToBackStack(TooLargeTransactionFragment.TAG)
+                    .commit()
+        }
+
+        btn_add_empty_fragment.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.container_fragment, NothingFragment())
+                    .addToBackStack(NothingFragment.TAG)
                     .commit()
         }
     }
