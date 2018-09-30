@@ -16,7 +16,6 @@ class LiveBridgeFragment : Fragment() {
 
     companion object {
         const val KEY = "KeyIndex"
-        const val DATA = "KeyData"
         const val TAG = "LiveBridgeFragment"
 
         fun newInstance(index: Int): Fragment {
@@ -38,8 +37,7 @@ class LiveBridgeFragment : Fragment() {
         size = (arguments?.getInt(KEY)?: 0) * 100000
 
         if (savedInstanceState != null) {
-            Bridge.restoreInstanceState(this, savedInstanceState);
-//            StateSaver.restoreInstanceState(this, savedInstanceState)
+            Bridge.restoreInstanceState(this, savedInstanceState)
         } else {
             data = IntArray(size)
         }
@@ -49,8 +47,7 @@ class LiveBridgeFragment : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        Bridge.saveInstanceState(this, outState);
-//        StateSaver.saveInstanceState(this, outState)
+        Bridge.saveInstanceState(this, outState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
