@@ -2,13 +2,11 @@ package toolargetransaction.com.elyeproj.demotoolargetransaction
 
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.evernote.android.state.State
-import com.evernote.android.state.StateSaver
 import com.livefront.bridge.Bridge
 import kotlinx.android.synthetic.main.fragment_too_large_transaction.*
 
