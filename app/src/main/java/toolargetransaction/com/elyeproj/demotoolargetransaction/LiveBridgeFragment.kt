@@ -19,7 +19,7 @@ class LiveBridgeFragment : Fragment() {
         fun newInstance(index: Int): Fragment {
             val argument = Bundle()
             argument.putInt(KEY, index)
-            val fragment =  LiveBridgeFragment()
+            val fragment = LiveBridgeFragment()
             fragment.arguments = argument
             return fragment
         }
@@ -32,7 +32,7 @@ class LiveBridgeFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        size = (arguments?.getInt(KEY)?: 0) * 100000
+        size = (arguments?.getInt(KEY) ?: 0) * 100000
 
         if (savedInstanceState != null) {
             Bridge.restoreInstanceState(this, savedInstanceState)
@@ -42,6 +42,7 @@ class LiveBridgeFragment : Fragment() {
 
         return inflater.inflate(R.layout.fragment_too_large_transaction, container, false)
     }
+
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)

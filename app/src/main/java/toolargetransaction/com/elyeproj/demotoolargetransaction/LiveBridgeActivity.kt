@@ -1,24 +1,35 @@
 package toolargetransaction.com.elyeproj.demotoolargetransaction
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.livefront.bridge.Bridge
 import kotlinx.android.synthetic.main.activity_too_large_transaction.*
 
 class LiveBridgeActivity : AppCompatActivity() {
 
     companion object {
         const val KEY = "KeyIndex"
+        const val SHARED_TAG = "com.livefront.bridge.BridgeDelegate"
     }
 
     private var index = 0
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_too_large_transaction)
 
-        savedInstanceState?.let{
-            index = it.getInt(KEY)
+        sharedPreferences = applicationContext.getSharedPreferences(SHARED_TAG, Context.MODE_PRIVATE)
+        updateSharedPrefCount()
+
+        if (savedInstanceState == null) {
+            Bridge.clearAll(applicationContext)
+        } else {
+            index = savedInstanceState.getInt(KEY)
         }
+
         btn_add_fragment.setOnClickListener {
             index++
             supportFragmentManager.beginTransaction()
@@ -26,6 +37,10 @@ class LiveBridgeActivity : AppCompatActivity() {
                     .addToBackStack(LiveBridgeFragment.TAG)
                     .commit()
         }
+    }
+
+    fun updateSharedPrefCount() {
+        txt_shared_pref_size.text = sharedPreferences.all.size.toString()
     }
 
     override fun onBackPressed() {
@@ -37,4 +52,5 @@ class LiveBridgeActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
         outState?.putInt(KEY, index)
     }
+
 }
