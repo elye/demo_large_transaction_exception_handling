@@ -20,6 +20,14 @@
         android:padding="16dp"
         android:text="Add State Fragment" />
 
+    <Button
+        android:id="@+id/btn_add_empty_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="16dp"
+        android:text="Add Empty Fragment" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,16 +40,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textSize="24sp"
         android:padding="16dp"
         android:text="Not Applicable" />
 
-    <Button
-        android:id="@+id/btn_add_empty_fragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="16dp"
-        android:text="Add Empty Fragment" />
 
 
 </LinearLayout>

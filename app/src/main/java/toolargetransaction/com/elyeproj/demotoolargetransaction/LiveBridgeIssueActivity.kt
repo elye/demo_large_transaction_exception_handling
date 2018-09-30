@@ -20,6 +20,8 @@ class LiveBridgeIssueActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_too_large_transaction)
 
+        title = "Live Bridge Issues Demo"
+
         if (savedInstanceState != null) {
             index = savedInstanceState.getInt(KEY)
         }
@@ -36,6 +38,7 @@ class LiveBridgeIssueActivity : AppCompatActivity() {
         }
 
         btn_add_empty_fragment.setOnClickListener {
+            index++
             supportFragmentManager.beginTransaction()
                     .replace(R.id.container_fragment, NothingFragment())
                     .addToBackStack(NothingFragment.TAG)

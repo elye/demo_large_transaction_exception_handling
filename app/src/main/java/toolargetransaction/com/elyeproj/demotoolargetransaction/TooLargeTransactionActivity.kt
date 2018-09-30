@@ -16,6 +16,8 @@ class TooLargeTransactionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_too_large_transaction)
 
+        title = "Too Large Transaction"
+
         savedInstanceState?.let{
             index = it.getInt(KEY)
         }
@@ -28,6 +30,7 @@ class TooLargeTransactionActivity : AppCompatActivity() {
         }
 
         btn_add_empty_fragment.setOnClickListener {
+            index++
             supportFragmentManager.beginTransaction()
                     .replace(R.id.container_fragment, NothingFragment())
                     .addToBackStack(NothingFragment.TAG)
