@@ -17,5 +17,8 @@ class MainActivity : AppCompatActivity() {
         btn_live_bridge_transaction.setOnClickListener {
             startActivity(Intent(this, LiveBridgeActivity::class.java))
         }
+        btn_live_bridge_issue_transaction.setOnClickListener {
+            startActivity(Intent(this, LiveBridgeIssueActivity::class.java))
+        }
     }
 }

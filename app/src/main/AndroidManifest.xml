@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".TooLargeTransactionActivity"/>
         <activity android:name=".LiveBridgeActivity"/>
+        <activity android:name=".LiveBridgeIssueActivity"/>
     </application>
 
 </manifest>

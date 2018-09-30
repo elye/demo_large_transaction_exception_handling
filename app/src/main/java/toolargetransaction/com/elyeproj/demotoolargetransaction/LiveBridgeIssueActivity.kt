@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import com.livefront.bridge.Bridge
 import kotlinx.android.synthetic.main.activity_too_large_transaction.*
 
-class LiveBridgeActivity : AppCompatActivity() {
+class LiveBridgeIssueActivity : AppCompatActivity() {
 
     companion object {
         const val KEY = "KeyIndex"
@@ -21,21 +21,18 @@ class LiveBridgeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_too_large_transaction)
 
-        if (savedInstanceState == null) {
-            Bridge.clearAll(applicationContext)
-        } else {
+        if (savedInstanceState != null) {
             index = savedInstanceState.getInt(KEY)
         }
 
         sharedPreferences = applicationContext.getSharedPreferences(SHARED_TAG, Context.MODE_PRIVATE)
         updateSharedPrefCount()
 
-
         btn_add_fragment.setOnClickListener {
             index++
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.container_fragment, LiveBridgeFragment.newInstance(index))
-                    .addToBackStack(LiveBridgeFragment.TAG)
+                    .replace(R.id.container_fragment, LiveBridgeIssueFragment.newInstance(index))
+                    .addToBackStack(LiveBridgeIssueFragment.TAG)
                     .commit()
         }
     }

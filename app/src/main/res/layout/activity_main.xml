@@ -22,4 +22,11 @@
         android:padding="16dp"
         android:text="Open Live Bridge Transaction" />
 
+    <Button
+        android:id="@+id/btn_live_bridge_issue_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="16dp"
+        android:text="Live Bridge Transaction Issue" />
 </LinearLayout>
